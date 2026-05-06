@@ -1,0 +1,40 @@
+import destinos.*
+import mensajeria.*
+import mensajeros.*
+import paquetes.*
+import vehiculos.*
+
+describe "Test - Segunda parte" {
+    test"Contratar un mensajero"{
+        empresa.contratarUnMensajero(roberto)
+        assert.equals(true, empresa.mensajeros().contains(roberto))
+    }
+    test"Despedir un mensajero"{
+        empresa.contratarUnMensajero(roberto)
+        empresa.despedirUnMensajero(roberto)
+        assert.equals(false, empresa.mensajeros().contains(roberto))
+    }
+    test"Despedir a todos los mensajeros"{
+        empresa.contratarUnMensajero(roberto)
+        empresa.contratarUnMensajero(neo)
+        empresa.despedirATodos()
+        assert.equals(0, empresa.mensajeros().size())
+    }
+    test"Es una mensajeria grande"{
+        empresa.contratarUnMensajero(roberto)
+        empresa.contratarUnMensajero(neo)
+        empresa.contratarUnMensajero(chuckNorris)
+        assert.equals(true, empresa.esGrande())
+    }
+    test "El paquete puede ser entregado por el primer empleado de la empresa"{
+        paquete.registrarPago()
+        empresa.contratarUnMensajero(roberto)
+        brooklyn.dejaPasar(roberto)
+        assert.equals(true, paquete.puedeSerEntregado(roberto))
+    }
+    test "Peso del ultimo empleado contratado"{
+        empresa.contratarUnMensajero(roberto)
+        empresa.contratarUnMensajero(neo)
+        assert.equals(0, empresa.pesoDelUltimoMensajero())
+    }
+}

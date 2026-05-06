@@ -1,0 +1,42 @@
+import destinos.*
+import mensajeria.*
+import mensajeros.*
+import paquetes.*
+import vehiculos.*
+
+describe "Test - Tercera parte" {
+    test "1.Averiguar si un paquete puede ser entregado por la empresa de mensajería, es decir, si al menos uno de sus mensajeros puede entregar el paquete." {
+        paquete.registrarPago()
+        empresa.contratarUnMensajero(chuckNorris)
+        empresa.contratarUnMensajero(roberto)
+        empresa.contratarUnMensajero(neo)
+        assert.equals(true, empresa.algunEmpleadoPuedeEntregar(paquete))
+    }
+    test "2. Obtener todos los mensajeros que pueden llevar un paquete dado. " {
+        paquete.registrarPago()
+        empresa.contratarUnMensajero(chuckNorris)
+        empresa.contratarUnMensajero(roberto)
+        assert.equals([chuckNorris, roberto], empresa.empleadosQuePuedenEntregar(paquete))
+    }
+    test "3. Saber si una mensajería tiene sobrepeso. Esto sucede si el promedio del peso de los mensajeros es superior a 500 Kg." {
+        roberto.peso(590)
+        empresa.contratarUnMensajero(roberto)
+        assert.equals(true, empresa.tieneSobrepeso())
+    }
+    test "4. Hacer que la empresa de mensajería envíe un paquete. Para ello elige cualquier mensajero entre los que pueden enviarlo y si no puede lo agrega a los paquetes pendientes. " {
+    }
+    test "5. Conocer la facturación de la empresa, que es el total ganado por los paquetes enviados." {
+
+    }
+    test "6. Dado un conjunto de paquetes, enviarlos a todos." {
+    
+    }
+    test "7.Encontrar el paquete pendiente más caro y enviarlo, actualizando los pendientes en caso de haberlo podido enviar." {
+    
+    }
+}
+
+
+
+
+

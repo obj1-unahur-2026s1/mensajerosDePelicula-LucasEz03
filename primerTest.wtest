@@ -1,0 +1,21 @@
+import destinos.*
+import mensajeria.*
+import mensajeros.*
+import paquetes.*
+import vehiculos.*
+
+describe "Test - Primera parte" {
+
+  test "Roberto puede llevar un paquete que está pago en un camión que tiene un acoplado." {
+    paquete.registrarPago()
+    roberto.cambiarVehiculo(camion)
+    brooklyn.dejaPasar(roberto)
+    assert.equals(true, paquete.puedeSerEntregado(roberto))
+  }
+  
+  test "Neo con crédito no puede llevar un paquete que no está pago a la matrix."{
+    paquete.cambiarDestino(matrix)
+    neo.cargarCredito(3)
+    assert.equals(false, paquete.puedeSerEntregado(neo))
+  }
+}
